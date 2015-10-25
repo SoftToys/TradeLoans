@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="fo-verify" content="7d7b130e-c6c0-4cb0-a94d-5f114b1d55fd">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
@@ -34,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - TradeAloan.com</p> 
+            <p>&copy; @DateTime.Now.Year - TradeAloan.com | @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Home") | @Html.ActionLink("Terms & Conditions", "Terms", "Home")</p>
         </footer>
     </div>
 
