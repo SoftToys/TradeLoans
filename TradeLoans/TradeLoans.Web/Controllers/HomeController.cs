@@ -28,6 +28,13 @@ namespace TradeLoans.Web.Controllers
             return View();
         }
 
+        public ActionResult GetLoan()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
         public ActionResult Partners()
         {
             ViewBag.Message = "Your contact page.";

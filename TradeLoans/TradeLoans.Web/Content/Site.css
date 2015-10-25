@@ -23,3 +23,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.BankrateFCC_calc-container-small {
+    width: 280px !important;
+}
+
+#loanCalbtnText {
+    color: white;
+}

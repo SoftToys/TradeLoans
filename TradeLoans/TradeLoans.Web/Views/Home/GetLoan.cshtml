@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Get A Loan";
+}
+
+
+<h2>Get A Loan</h2>
+
+<div class="row">
+    <div class="col-lg-4" style="padding:15px;">
+        <form onsubmit="onSubmit()">
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input class="form-control" id="amount" placeholder="In USD" type="number" required />
+            </div>
+            <div class="form-group">
+                <label for="years">Years</label>
+                <input id="years" class="form-control" placeholder="1-30 years" type="number" required />
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option value="">Select purpose</option>
+                    <option value="Household Expnses" data-price="0">Household Expnses</option>
+                    <option value="Vacation" data-price="0">Vacation</option>
+                    <option value="Home Improvement" data-price="0">Home Improvement</option>
+                    <option value="Debt Consildeation" data-price="0">Debt Consildeation</option>
+                    <option value="Large Purchases" data-price="0">Large Purchases</option>
+                    <option value="Business" data-price="0">Business</option>
+                    <option value="Auto" data-price="0">Auto</option>
+                    <option value="Dental/Medical" data-price="0">Dental/Medical</option>
+                    <option value="Taxes" data-price="0">Taxes</option>
+                    <option value="Special Occasions Loans" data-price="0">Special Occasions Loans</option>
+                    <option value="Engagement RIng" data-price="0">Engagement Ring</option>
+                    <option value="College/School" data-price="0">College/School</option>
+                </select>
+            </div>
+            <button onclick="onSubmit" class="btn btn-success btn-lg">Get a Loan</button>
+
+        </form>
+        <script>
+            var onSubmit = function () {
+                event.preventDefault();
+                window.location.href = "https://www.prosper.com/borrower/#/prospect/pre-registration";
+            }
+        </script>
+    </div>
+
+    <div class="col-lg-4" style="padding:15px;">
+        <link rel="stylesheet" href="http://www.bankrate.com/free-content/css/bankrate-fcc-calculators.css" type="text/css" />
+        <div id="loanCalheaderDiv" class="BankrateFCC_boxhead-container-small" style="width:280px!important">
+            <div id="loanCaltitleDiv" class="h3">
+                TradeAloan Calculator
+            </div>
+            <a href="http://www.bankrate.com/free-content/" target="_blank" rel="nofollow" title="Add this loan calculator widget to your site">
+            </a>
+        </div>
+        <input id="loanCal" type="text" value="3,Verdana,350" style="display:none" />
+        <script language="Javascript" src="http://js.bankrate.com/free-calculators/free-simple-loan-calculator-widget.js" type="text/javascript">
+        </script>
+        <div id="loanCalfooterDiv" class="BankrateFCC_footer-container small" style="width:280px!important">
+            <a href="http://www.bankrate.com/calculators/mortgages/mortgage-payment-calculator.aspx" rel="nofollow" title="Loan calculator by Bankrate.com" target="_blank">
+                <u>Full featured loan payment calculator.</u>
+            </a>
+        </div>
+        <script type="text/javascript">loanCalinit();</script>
+
+    </div>
+
+    <script>
+        $(function () {
+            $('#loanCalDivCalculate').removeClass('BankrateFCC_button-small');
+            $('#loanCalDivCalculate').addClass('btn  btn-lg btn-info');
+            $('#loanCaltitleDiv').css('font-size', '')
+
+            $('.BankrateFCC_sel-options').each(function (e, elem) {
+
+                $(elem).removeClass('BankrateFCC_sel-options');
+                $(elem).addClass('form-control');
+                $(elem).attr('type','number');
+            });
+            
+
+
+        });
+
+    </script>
+
+
+</div>
+
+
