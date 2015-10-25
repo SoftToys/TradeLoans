@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TradeLoans.Web.Models.Partner>
+@{
+    ViewBag.Title = "Partners";
+}
+
+<p class="h1">TradeAloan is reaching out to leading platforms</p>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    @*if (i % 3 == 0)
+    {
+        if (i % 3 == 0)
+    {
+        @Html.Raw("</div>");
+    }
+        @Html.Raw("<div class=\"row\">");
+    }*@
+
+    <div class="col-md-4">
+        <img src="@Url.Content("~/Content/Images/Partners/" + Model.ElementAt(i).Name + ".png")" class="img-responsive" alt="Cinque Terre">
+
+    </div>
+
+    
+}
+
