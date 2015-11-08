@@ -13,10 +13,26 @@ namespace TradeLoans.Web.Controllers
         {
             return View();
         }
+        public ActionResult ComingSoon()
+        {
+            return View();
+        }
+        
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Reviews()
+        {           
 
             return View();
         }
@@ -49,6 +65,19 @@ namespace TradeLoans.Web.Controllers
                 new Partner() { ID = 7, Name = "Ratesetter" },
                 new Partner() { ID = 8, Name = "zopa" }
             });
+        }
+        [HttpPost]
+        public JsonResult FindBestLoan(LoanRequest request)
+        {
+            string bestProviderLink = "https://www.prosper.com/borrower/#/prospect/pre-registration";
+
+            if (request.Amount > 15000)
+            {
+                bestProviderLink = string.Format("https://www.lendingclub.com/borrowerc/personalInfo.action?rate-submit=Check+Your+Rates&lA={0}&lc_referrer=tradealoan.com&rE=&creditScore=EXCELLENT&param2=excellent&loanPurpose=other", request.Amount);
+            }
+
+
+            return new JsonResult() { Data = new { BestProviderLink = bestProviderLink } };
         }
     }
 }

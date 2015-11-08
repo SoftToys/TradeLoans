@@ -3,7 +3,10 @@
     ViewBag.Title = "Partners";
 }
 
-<p class="h1">TradeAloan is reaching out to leading platforms</p>
+<div class="well-lg">
+    <h1>TradeAloan is reaching out to leading platforms</h1>
+    </div>
+                      
 
 @for (int i = 0; i < Model.Count(); i++)
 {
@@ -17,10 +20,11 @@
     }*@
 
     <div class="col-md-4">
-        <img src="@Url.Content("~/Content/Images/Partners/" + Model.ElementAt(i).Name + ".png")" class="img-responsive" alt="Cinque Terre">
+        <img src="@Url.Content("~/Content/Images/Partners/" + Model.ElementAt(i).Name + ".png")" class="img-responsive" alt="partner">
 
     </div>
 
     
 }
+   
 

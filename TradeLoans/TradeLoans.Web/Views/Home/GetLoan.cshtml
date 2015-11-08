@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Get A Loan";
 }
 
@@ -11,36 +10,48 @@
         <form onsubmit="onSubmit()">
             <div class="form-group">
                 <label for="amount">Amount</label>
-                <input class="form-control" id="amount" placeholder="In USD" type="number" required />
+                <input class="form-control" id="amount" placeholder="5000$-35000$" type="number" required min="5000" max="35000" />
             </div>
             <div class="form-group">
                 <label for="years">Years</label>
-                <input id="years" class="form-control" placeholder="1-30 years" type="number" required />
+                <input id="years" class="form-control" placeholder="1-40 years" type="number" required min="1" max="40" />
             </div>
             <div class="form-group">
-                <select class="form-control">
+                <select class="form-control" id="purpose">
                     <option value="">Select purpose</option>
-                    <option value="Household Expnses" data-price="0">Household Expnses</option>
-                    <option value="Vacation" data-price="0">Vacation</option>
-                    <option value="Home Improvement" data-price="0">Home Improvement</option>
-                    <option value="Debt Consildeation" data-price="0">Debt Consildeation</option>
-                    <option value="Large Purchases" data-price="0">Large Purchases</option>
-                    <option value="Business" data-price="0">Business</option>
-                    <option value="Auto" data-price="0">Auto</option>
-                    <option value="Dental/Medical" data-price="0">Dental/Medical</option>
-                    <option value="Taxes" data-price="0">Taxes</option>
-                    <option value="Special Occasions Loans" data-price="0">Special Occasions Loans</option>
-                    <option value="Engagement RIng" data-price="0">Engagement Ring</option>
-                    <option value="College/School" data-price="0">College/School</option>
+                    <option value="0" data-price="0">Household Expnses</option>
+                    <option value="1" data-price="0">Vacation</option>
+                    <option value="2" data-price="0">Home Improvement</option>
+                    <option value="3" data-price="0">Debt Consildeation</option>
+                    <option value="4" data-price="0">Large Purchases</option>
+                    <option value="5" data-price="0">Business</option>
+                    <option value="6" data-price="0">Auto</option>
+                    <option value="7" data-price="0">Dental/Medical</option>
+                    <option value="8" data-price="0">Taxes</option>
+                    <option value="9" data-price="0">Special Occasions Loans</option>
+                    <option value="10" data-price="0">Engagement Ring</option>
+                    <option value="11" data-price="0">College/School</option>
                 </select>
             </div>
-            <button onclick="onSubmit" class="btn btn-success btn-lg">Get a Loan</button>
+            <button onclick="onSubmit" class="btn btn-success btn-lg" id="submitButton">Get a Loan</button>
+            <div id="spinner-loader" style="display:none">
+                <span class="h3">Finding best Match…</span>
 
+                <div class="spinner-loader">
+
+                </div>
+            </div>
         </form>
         <script>
             var onSubmit = function () {
                 event.preventDefault();
-                window.location.href = "https://www.prosper.com/borrower/#/prospect/pre-registration";
+                $('#submitButton').fadeOut(1000, function () { $('#spinner-loader').fadeIn(); });
+
+                $.post("/home/FindBestLoan", { Amount: $('#amount').val(), Years: $('#years').val(), Purpose: $('#purpose').val() })
+                    .done(function (data) {
+                        window.location.href = data.BestProviderLink;
+                    });
+                //window.location.href = "https://www.prosper.com/borrower/#/prospect/pre-registration";
             }
         </script>
     </div>
@@ -76,9 +87,9 @@
 
                 $(elem).removeClass('BankrateFCC_sel-options');
                 $(elem).addClass('form-control');
-                $(elem).attr('type','number');
+                $(elem).attr('type', 'number');
             });
-            
+
 
 
         });
